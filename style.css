@@ -1,0 +1,49 @@
+body {
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.glowing-text {
+    text-align: center;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 60px;
+    color: rgb(101, 238, 215);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 0 0 10px #1e41df, 0 0 20px #3a28e2, 0 0 30px #3528e78f, 0 0 40px #4927df67, 0 0 70px #4927df, 0 0 80px #4927df, 0 0 100px #4927df, 0 0 150px #4927df;
+}
+
+.glowing-text:hover {
+    cursor: pointer;
+
+}
+
+.move-away-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4927df;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    touch-action: none;
+    transition: all 0.1s ease-in-out;
+    border-radius: 2rem;
+    box-shadow: 0 0 50px #4927df, 0 0 100px #4927df, 0 0 150px #4927df;
+}
+
+.move-away-button:hover {
+    top: calc(50% + 20px);
+    left: calc(50% + 20px);
+    box-shadow: 0 0 50px #4927df, 0 0 100px #4927df, 0 0 150px #4927df;
+}
