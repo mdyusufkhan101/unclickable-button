@@ -1,49 +1,240 @@
 body {
-    background-color: rgb(0, 0, 0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
+
+    margin: 0px;
+    background-color: #f8f8f8;
 }
 
-.glowing-text {
+body.dark-mode {
+    background-color: #000;
+    color: #fff;
+}
+
+
+h1 {
+    font-family: Segoe UI;
     text-align: center;
+    line-height: 42px;
+    padding-bottom: 23px;
+    margin: 10px 0px;
+    border-bottom: 1px solid #000000;
+}
+
+
+
+#hash-symbol {
+    color: #000000;
+    font-size: 42px;
+    position: relative;
+    top: 4px;
+}
+
+.dark-mode #hash-symbol {
+    color: #fff;
+}
+
+#app-name {
+    color: #ff5e00;
+}
+
+.dark-mode #app-name {
+    color: #953ce9;
+}
+
+section {
+    width: 150px;
+    margin: 250px auto;
+    padding: 60px;
+    background-color: #000000;
+    box-shadow: 0px 5px 35px #f1f1f1;
+    border-radius: 35px;
+}
+
+.dark-mode section {
+    background-color: white;
+}
+
+.toggle-btn {
+    position: relative;
+    width: 150px;
+    height: 74px;
+    margin: 0 auto;
+    border-radius: 40px;
+}
+
+#message-box {
     position: absolute;
-    top: 50px;
+    top: 500px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 60px;
-    color: rgb(101, 238, 215);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-shadow: 0 0 10px #1e41df, 0 0 20px #3a28e2, 0 0 30px #3528e78f, 0 0 40px #4927df67, 0 0 70px #4927df, 0 0 80px #4927df, 0 0 100px #4927df, 0 0 150px #4927df;
-}
-
-.glowing-text:hover {
-    cursor: pointer;
-
-}
-
-.move-away-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px 20px;
+    padding: 10px;
     font-size: 18px;
-    background-color: #4927df;
-    color: #ffffff;
-    border: none;
-    cursor: pointer;
-    touch-action: none;
-    transition: all 0.1s ease-in-out;
-    border-radius: 2rem;
-    box-shadow: 0 0 50px #4927df, 0 0 100px #4927df, 0 0 150px #4927df;
+    color: #fff;
+    background-color: #000;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
 }
 
-.move-away-button:hover {
-    top: calc(50% + 20px);
-    left: calc(50% + 20px);
-    box-shadow: 0 0 50px #4927df, 0 0 100px #4927df, 0 0 150px #4927df;
+
+.dark-mode #message-box {
+    opacity: 1;
+}
+
+.follow-dropdown {
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    display: inline-block;
+}
+
+.follow-btn {
+
+    background-color: #b700ff;
+    color: #fff;
+    font-size: 20px;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.follow-btn:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #b700ff transparent;
+}
+
+.dropdown-content {
+    margin-top: 0;
+    position: absolute;
+    z-index: 2;
+    display: none;
+    background-color: #f8f8f8;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-top: 8px;
+    right: -60px;
+}
+
+.dropdown-content a {
+    display: block;
+    color: #000;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 10px 0px;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.follow-dropdown.open .dropdown-content {
+    /* added for open dropdown */
+    display: block;
+}
+
+.fab {
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+.fas {
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+
+
+input[type="checkbox"] {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: 0px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+}
+
+#current-time {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+}
+
+@media screen and (max-width: 530px) {
+    #current-time {
+        top: 80px;
+    }
+}
+
+/* First toggle btn */
+
+#_1st-toggle-btn span {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    overflow: hidden;
+    opacity: 1;
+    background-color: #fff;
+    box-shadow: 0px 2px 25px #ff6600;
+    border-radius: 40px;
+    transition: 0.2s ease background-color, 0.2s ease opacity;
+}
+
+.dark-mode #_1st-toggle-btn span {
+    box-shadow: 0px 2px 25px #953ce9;
+}
+
+#_1st-toggle-btn span:before,
+#_1st-toggle-btn span:after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    transition: 0.5s ease transform, 0.2s ease background-color;
+}
+
+#_1st-toggle-btn span:before {
+    background-color: #fff;
+    transform: translate(-58px, 0px);
+    z-index: 1;
+}
+
+#_1st-toggle-btn span:after {
+    background-color: #f34814;
+    transform: translate(8px, 0px);
+    z-index: 0;
+}
+
+#_1st-toggle-btn input[type="checkbox"]:checked+span {
+    background-color: #000000;
+}
+
+#_1st-toggle-btn input[type="checkbox"]:active+span {
+    opacity: 0.5;
+}
+
+#_1st-toggle-btn input[type="checkbox"]:checked+span:before {
+    background-color: #000000;
+    transform: translate(56px, -19px);
+}
+
+#_1st-toggle-btn input[type="checkbox"]:checked+span:after {
+    background-color: #fff;
+    transform: translate(79px, 0px);
 }

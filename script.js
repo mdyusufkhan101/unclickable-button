@@ -1,39 +1,56 @@
-const moveAwayButton = document.querySelector('.move-away-button');
-const glowingText = document.querySelector('.glowing-text');
-moveAwayButton.addEventListener('mouseover', moveButton);
-moveAwayButton.addEventListener('touchstart', moveButton);
+const toggleBtn = document.getElementById("toggle-btn");
+const body = document.body;
+const followDropdown = document.querySelector(".follow-dropdown");
+const followBtn = document.querySelector(".follow-btn");
 
-glowingText.addEventListener('click', () => {
-    glowingText.style.transition = 'all 1s ease-out';
-    glowingText.style.top = '100vh';
+document.addEventListener("DOMContentLoaded", () => {
+  // Get the current time and display it in the webpage
+  function updateTime() {
+    const now = new Date();
+    const hour = now.getHours();
+    const currentTime = now.toLocaleTimeString();
+    document.getElementById("current-time").textContent = currentTime;
+
+    // Toggle between dark and light mode based on time
+    if (hour >= 19 || hour < 6) {
+      // night time
+      body.classList.add("dark-mode");
+    } else {
+      // day time
+      body.classList.remove("dark-mode");
+    }
+
+    // Update the toggle button to match the body class
+    toggleBtn.checked = body.classList.contains("dark-mode");
+  }
+
+  // Set the initial state of the toggle button and body class
+  body.classList.remove("dark-mode");
+  toggleBtn.checked = false;
+
+  // Call the updateTime() function every 2 seconds
+  setInterval(updateTime, 1000);
+
+  toggleBtn.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+
+    if (body.classList.contains("dark-mode")) {
+      toggleBtn.disabled = true;
+      setTimeout(() => {
+        body.classList.remove("dark-mode");
+        toggleBtn.checked = false;
+        toggleBtn.disabled = false;
+      }, 2000);
+    } else {
+      toggleBtn.disabled = true;
+      setTimeout(() => {
+        toggleBtn.checked = false;
+        toggleBtn.disabled = false;
+      }, 2000);
+    }
   });
 
-function moveButton() {
-  const viewportWidth = window.innerWidth;
-  const viewportHeight = window.innerHeight;
-  const buttonWidth = moveAwayButton.offsetWidth;
-  const buttonHeight = moveAwayButton.offsetHeight;
-  const maxTop = viewportHeight - buttonHeight - 50;
-  const maxLeft = viewportWidth - buttonWidth - 50;
-  const newTop = Math.max(50, Math.floor(Math.random() * maxTop));
-  const newLeft = Math.max(50, Math.floor(Math.random() * maxLeft));
-  moveAwayButton.style.top = newTop + 'px';
-  moveAwayButton.style.left = newLeft + 'px';
-}
-
-window.addEventListener('resize', function (e) {
-  const viewportWidth = window.innerWidth;
-  const viewportHeight = window.innerHeight;
-  const buttonWidth = moveAwayButton.offsetWidth;
-  const buttonHeight = moveAwayButton.offsetHeight;
-  const maxTop = viewportHeight - buttonHeight - 50;
-  const maxLeft = viewportWidth - buttonWidth - 50;
-  const currentTop = parseInt(moveAwayButton.style.top);
-  const currentLeft = parseInt(moveAwayButton.style.left);
-  if (currentTop > maxTop) {
-    moveAwayButton.style.top = maxTop + 'px';
-  }
-  if (currentLeft > maxLeft) {
-    moveAwayButton.style.left = maxLeft + 'px';
-  }
+  followBtn.addEventListener("click", function () {
+    followDropdown.classList.toggle("open");
+  });
 });
