@@ -1,6 +1,7 @@
 const toggleBtn = document.getElementById("toggle-btn");
 const body = document.body;
 const followDropdown = document.querySelector(".follow-dropdown");
+const toggleSound = document.getElementById("toggle-sound");
 const followBtn = document.querySelector(".follow-btn");
 
 // Set the initial mode to dark mode
@@ -39,4 +40,7 @@ toggleBtn.addEventListener("click", () => {
 
 followBtn.addEventListener("click", function () {
   followDropdown.classList.toggle("open");
+});
+toggleBtn.addEventListener("click", function () {
+  toggleSound.play();
 });
